@@ -1,0 +1,14 @@
+baseURL = 'https://blakejc94.github.io/'
+languageCode = 'en-us'
+title = 'Notes and Learnings'
+theme = 'risotto'
+
+[params]
+  author = "Blake Cook"
+  description = "An outlet for things of interest."
+
+  [[params.social]]
+    icon = "github"
+    name = "GitHub"
+    url = "https://github.com/BlakeJC94"
+
