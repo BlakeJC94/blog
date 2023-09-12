@@ -1,14 +1,4 @@
 baseURL = 'https://blakejc94.github.io/'
 languageCode = 'en-us'
-title = 'Notes and Learnings'
-theme = 'm10c'
-
-[params]
-  author = "Blake Cook"
-  description = "An outlet for things of interest."
-
-  [[params.social]]
-    icon = "github"
-    name = "GitHub"
-    url = "https://github.com/BlakeJC94"
-
+title = 'Blog'
+theme = "m10c"
