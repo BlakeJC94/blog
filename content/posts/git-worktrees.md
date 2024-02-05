@@ -1,17 +1,20 @@
 +++
 title = 'Git Worktrees'
 date = 2024-01-09T12:55:23+10:00
-draft = true
+draft = false
 +++
 
 # Git worktrees
 
-- Ever wanted to check out multiple branches at the same time?
-- `$ git worktree` is pretty useful for this!
-- Like other aspects of git, it can be a bit rough around the edges
-- Worktrees in particular are more fiddly
-- But once it's working, its hard to go back
-- Here's a collection of tips I've collected from daily use:
+Ever wanted to have multiple git branches checked out at the same time? Say we need to pause our
+work in one branch and hop over to another, there's that extra overhead needed to stash unstaged
+changes or make a WIP commit. It would be faster if we could just drop everything and `cd` straight
+to the branch of interest. The underutilised `git worktree` command makes this sort of workflow
+possible!
+
+Like other aspects of git, it's a bit rough around the edges at times. Understanding a bit more
+about the inner workings of git help makes it feel a bit less fiddly. Here we'll discuss in a bit
+more detail how to setup this workflow, and some of the caveats I've come across.
 
 ## Getting started
 
@@ -67,6 +70,14 @@ state of work. On top of that, I can manage separate environments for these work
 that I'm only testing the code I want. I could even open another terminal and test multiple branches
 side by side. Lovely!
 
+Once the branch is pushed, reviewd and merged, I have no use for this branch anymore, so let's
+remove it
+```bash
+$ cd ..  # Back to ~/Workspace/repos/project-name
+$ git worktree remove fix-urgent-bug
+$ ls -a
+# .  ..  .git  main  new-branch
+```
 
 ## Reviewing
 
@@ -87,25 +98,38 @@ worktrees to check it out into it's own directory
 $ git fetch  # Get latest branches
 $ git worktree add --guess-remote cool-feature
 $ ls -a
-# .  ..  .git  main  new-branch  fix-urgent-bug  cool-feature
+# .  ..  .git  main  new-branch  cool-feature
 $ cd cool-feature
 ```
 
 We can confirm that this worktree is up-to-date with `git log`, and any new commits can be `git
 pull`ed when we're in that directory!
 
-## Aliases
+## Alias
 
-TODO
+As helpfully suggested in the linked article, we can pull all of these commands together
+into a script and then create a git alias.
 
-Putting this into an alias:
+In `~/.git-clonetree.sh`:
+```sh
+#!/usr/bin/env bash
+
+url=$1
+base=$(basename ${url})
+dir=${2:-${base%.*}}
+
+git clone --bare ${url} ${dir}/.git
+cd ${dir}
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+git fetch origin
+
+primebranch=$(git symbolic-ref --short HEAD)
+git worktree add ${primebranch}
+```
+
+Putting this into an alias in `~/.gitconfig`:
 
 ```
-clonetree = !sh -c 'url=$1 && base=$(basename ${url}) && dir=${2:-${base%.*}}
-&& git clone --bare ${url} ${dir}/.git && cd ${dir} && git config remote.origin.fetch
-"+refs/heads/*:refs/remotes/origin/*" git fetch origin && git worktree add $(git primebranch) &&
-cd $(git primebranch) && git pullup' -
+[alias]
+    clonetree = !sh $HOME/.git-clonetree.sh
 ```
-
-
-## Conclusion
