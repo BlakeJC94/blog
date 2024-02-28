@@ -4,6 +4,20 @@ title = 'Blog'
 theme = "m10c"
 sectionPagesMenu = 'main'
 
+[menus]
+[[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+[[menus.main]]
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+[[menus.main]]
+    name = 'Projects'
+    pageRef = '/projects'
+    weight = 30
+
 
 [params]
   author = "Blake Cook"
@@ -13,3 +27,8 @@ sectionPagesMenu = 'main'
     icon = "github"
     name = "GitHub"
     url = "https://github.com/BlakeJC94"
+
+  [[params.social]]
+    icon = "linkedin"
+    name = "LinkedIn"
+    url = "www.linkedin.com/in/blake-cook-a476432b3"
