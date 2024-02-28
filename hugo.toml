@@ -2,10 +2,12 @@ baseURL = 'https://blakejc94.github.io/'
 languageCode = 'en-us'
 title = 'Blog'
 theme = "m10c"
+sectionPagesMenu = 'main'
+
 
 [params]
   author = "Blake Cook"
-  description = "An outlet for things of interest."
+  description = "Dimensions are a social construct."
 
   [[params.social]]
     icon = "github"
