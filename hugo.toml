@@ -10,13 +10,13 @@ sectionPagesMenu = 'main'
     pageRef = '/'
     weight = 10
 [[menus.main]]
-    name = 'Posts'
-    pageRef = '/posts'
-    weight = 20
-[[menus.main]]
     name = 'Projects'
     pageRef = '/projects'
     weight = 30
+[[menus.main]]
+    name = 'TIL'
+    weight = 20
+    pageRef = '/til'
 
 
 [params]
