@@ -1,7 +1,7 @@
 +++
 title = 'How_to_diff_two_local_files'
 date = 2024-02-29T10:20:11+11:00
-draft = true
+draft = false
 +++
 
 Use `git diff` with the `--no-index` flag:

@@ -11,12 +11,6 @@ sectionPagesMenu = 'main'
     url = "/"
     pageRef = '/'
     weight = 10
-[[menus.main]]
-    identifier = "TIL"
-    name = 'T.I.L.'
-    url = "/til/"
-    weight = 20
-    pageRef = '/til/'
 
 
 [params]
