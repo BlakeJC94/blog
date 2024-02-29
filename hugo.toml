@@ -1,27 +1,28 @@
 baseURL = 'https://blakejc94.github.io/'
 languageCode = 'en-us'
-title = 'Blog'
+title = 'Blog // BlakeJC94'
 theme = "m10c"
 sectionPagesMenu = 'main'
 
 [menus]
 [[menus.main]]
+    identifier = "home"
     name = 'Home'
+    url = "/"
     pageRef = '/'
     weight = 10
 [[menus.main]]
-    name = 'Projects'
-    pageRef = '/projects'
-    weight = 30
-[[menus.main]]
-    name = 'TIL'
+    identifier = "TIL"
+    name = 'T.I.L.'
+    url = "/til/"
     weight = 20
-    pageRef = '/til'
+    pageRef = '/til/'
 
 
 [params]
   author = "Blake Cook"
   description = "Dimensions are a social construct."
+  favicon = "./favicon.ico"
 
   [[params.social]]
     icon = "github"
