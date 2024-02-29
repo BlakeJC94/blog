@@ -1,5 +1,5 @@
 +++
-title = 'How_to_diff_two_local_files'
+title = 'How to diff two local files'
 date = 2024-02-29T10:20:11+11:00
 draft = false
 +++
